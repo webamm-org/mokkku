@@ -1,0 +1,6 @@
+- name: Apple
+  website: https://apple.com
+  industry: Computers
+- name: Microsoft
+  website: https://microsoft.com
+  industry: Computers
