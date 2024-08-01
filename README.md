@@ -47,6 +47,6 @@ FactoryBot.define do
     location    { Mokkku::User.location }
   end
 
-  after(:build) { |_| Mokkku::User.reset! }
+  after(:build) { |_| Mokkku::User.reset_context! }
 end
 ```
