@@ -16,6 +16,7 @@ jobs:
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
-          bundler-cache: true
+          ruby-version: '3.2'
+          bundler-cache: true # 'bundle install' and cache
       - name: Run tests
         run: bundle exec rspec spec
