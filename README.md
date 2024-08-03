@@ -2,6 +2,12 @@
 
 Japanese term Mokkku (モック) simply stands for mock. Mokkku is a simple library to provide fake data that is unique for your project. You can easily use LLM like GPT, Gemini, or Claude to fill the mock that based on your database schema. The library is inspired by the FFaker library.
 
+### Why Mokkku is good alternative for (F)Faker
+
+* It provides unique test data for your application that in many cases needs something more than values defined in (F)Faker
+* It generates test data in any language
+* It holds the context which make the test records as close to production values as possible so you won't end up with record where city is New York and country is France
+
 ## Configuration
 
 Add gem to the development and test groups in Gemfile:
@@ -34,6 +40,20 @@ Given you have `User` model with the `first_name`, `last_name`, and `location` a
 ```
 
 You can now get the test data by calling `Mokkku::User.first_name`, etc. Once you call the class method for the first time, the context is saved and you will get the data from the same record. Calling `Mokkku::User.first_name` will return `John` and then calling `Mokkku::User.location` will return `New York`. If you want to reset the context, call `Mokkku::User.reset_context!`
+
+## Mock generation
+
+Explore what parameters are available:
+
+```bash
+mokkku --help
+```
+
+Generation with GPT model:
+
+```bash
+mokkku --models=User,Company --api-key=value --llm-model=gpt
+```
 
 ## Usage with FactoryBot
 

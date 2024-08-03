@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'mokkku'
+require 'optionparser'
+
+options = {}
+
+OptionParser.new do |opts|
+  opts.banner = 'Usage: mokkku [options]'
+
+  opts.on('-m', '--model Model', 'Provide model name to generate mocks for') do |opt|
+    options[:models] = [opt]
+  end
+
+  opts.on('--models Model1,Model2', 'Provide model names to generate mocks for') do |opt|
+    options[:models] = opt.split(',')
+  end
+
+  opts.on('-a', '--api-key value', 'API key for LLM') do |opt|
+    options[:llm_api_key] = opt
+  end
+
+  opts.on('-llm', '--llm-model value', 'Type of LLM: GPT, Gemini, or Claude') do |opt|
+    options[:llm_model] = opt
+  end
+
+  opts.on('-p', '--mocks-path value', 'Location where files will be created, default to ./spec/mocks') do |opt|
+    options[:mocks_path] = opt
+  end
+
+  opts.on('-c', '--count value', 'Number of entries to generate in mock file, 10 by default') do |opt|
+    options[:mocks_count] = opt
+  end
+
+  opts.on('-l', '--language value', 'The language of mocks, english by default') do |opt|
+    options[:language] = opt
+  end
+end.parse!
+
+Mokkku::Cli::Runner.start(options)

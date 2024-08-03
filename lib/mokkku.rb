@@ -1,4 +1,5 @@
 require_relative 'mokkku/utils'
+require_relative 'mokkku/cli/runner'
 
 module Mokkku
   extend Mokkku::Utils
