@@ -13,5 +13,11 @@ RSpec.describe Mokkku::Generators::Builder do
         described_class.call(generator: 'gpt', api_key: 'api_key', prompt: 'prompt')
       ).to eq(Mokkku::Generators::Gpt)
     end
+
+    it 'returns Claude generator' do
+      expect(
+        described_class.call(generator: 'claude', api_key: 'api_key', prompt: 'prompt')
+      ).to eq(Mokkku::Generators::Claude)
+    end
   end
 end
