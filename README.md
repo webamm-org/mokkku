@@ -55,6 +55,12 @@ Generation with GPT model:
 mokkku --models=User,Company --api-key=value --llm-model=gpt
 ```
 
+Generation with Claude model:
+
+```bash
+mokkku --models=User,Company --api-key=value --llm-model=claude
+```
+
 ## Usage with FactoryBot
 
 Remember to reset the context in the after build callback:

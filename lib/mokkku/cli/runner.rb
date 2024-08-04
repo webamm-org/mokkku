@@ -1,6 +1,7 @@
 require_relative 'validator'
 require_relative 'prompt'
 require_relative '../generators/builder'
+require_relative '../yaml_sanitizer'
 
 module Mokkku
   module Cli
@@ -21,7 +22,10 @@ module Mokkku
           mock_file_name = model_name.to_s.gsub(/([a-z\d])([A-Z])/, '\1_\2').downcase
 
           puts "Write mocks for #{model_name} model in #{mock_file_name}.yml"
-          File.write(File.join(options.fetch(:mocks_path, './spec/mocks'), "#{mock_file_name}.yml"), yaml_mock)
+          File.write(
+            File.join(options.fetch(:mocks_path, './spec/mocks'), "#{mock_file_name}.yml"),
+            ::Mokkku::YamlSanitizer.sanitize(yaml_mock)
+          )
         end
 
         puts 'Done!'

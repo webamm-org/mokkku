@@ -1,4 +1,5 @@
 require_relative 'gpt'
+require_relative 'claude'
 
 module Mokkku
   module Generators
@@ -9,6 +10,8 @@ module Mokkku
         case generator
         when 'gpt'
           Mokkku::Generators::Gpt
+        when 'claude'
+          Mokkku::Generators::Claude
         else
           raise UnsupportedGenerator
         end

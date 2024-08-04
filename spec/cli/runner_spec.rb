@@ -27,6 +27,10 @@ RSpec.describe Mokkku::Cli::Runner do
         .to receive(:call)
         .with(api_key: 'api_key', prompt: prompt)
         .and_return('mocks')
+      expect(Mokkku::YamlSanitizer)
+        .to receive(:sanitize)
+        .with('mocks')
+        .and_return('mocks')
 
       expect(File)
         .to receive(:write)
