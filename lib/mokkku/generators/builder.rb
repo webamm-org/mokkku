@@ -1,5 +1,6 @@
 require_relative 'gpt'
 require_relative 'claude'
+require_relative 'gemini'
 
 module Mokkku
   module Generators
@@ -12,6 +13,8 @@ module Mokkku
           Mokkku::Generators::Gpt
         when 'claude'
           Mokkku::Generators::Claude
+        when 'gemini'
+          Mokkku::Generators::Gemini
         else
           raise UnsupportedGenerator
         end

@@ -38,4 +38,27 @@ OptionParser.new do |opts|
   end
 end.parse!
 
+class User
+  def self.columns
+    [
+      Struct.new(:name, :sql_type_metadata).new('first_name', Struct.new(:type).new('string')),
+      Struct.new(:name, :sql_type_metadata).new('age', Struct.new(:type).new('integer')),
+      Struct.new(:name, :sql_type_metadata).new('favourite_colour', Struct.new(:type).new('string')),
+      Struct.new(:name, :sql_type_metadata).new('country', Struct.new(:type).new('string')),
+      Struct.new(:name, :sql_type_metadata).new('city', Struct.new(:type).new('string'))
+    ]
+  end
+end
+
+class Company
+  def self.columns
+    [
+      Struct.new(:name, :sql_type_metadata).new('name', Struct.new(:type).new('string')),
+      Struct.new(:name, :sql_type_metadata).new('industry', Struct.new(:type).new('string')),
+      Struct.new(:name, :sql_type_metadata).new('ceo_name', Struct.new(:type).new('string')),
+      Struct.new(:name, :sql_type_metadata).new('address', Struct.new(:type).new('string'))
+    ]
+  end
+end
+
 Mokkku::Cli::Runner.start(options)

@@ -61,6 +61,12 @@ Generation with Claude model:
 mokkku --models=User,Company --api-key=value --llm-model=claude
 ```
 
+Generation with Gemini model:
+
+```bash
+mokkku --models=User,Company --api-key=value --llm-model=gemini
+```
+
 ## Usage with FactoryBot
 
 Remember to reset the context in the after build callback:

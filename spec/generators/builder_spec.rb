@@ -19,5 +19,11 @@ RSpec.describe Mokkku::Generators::Builder do
         described_class.call(generator: 'claude', api_key: 'api_key', prompt: 'prompt')
       ).to eq(Mokkku::Generators::Claude)
     end
+
+    it 'returns Gemini generator' do
+      expect(
+        described_class.call(generator: 'gemini', api_key: 'api_key', prompt: 'prompt')
+      ).to eq(Mokkku::Generators::Gemini)
+    end
   end
 end
