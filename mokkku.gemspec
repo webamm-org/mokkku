@@ -7,6 +7,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'pry'
   s.add_runtime_dependency 'ruby-openai', '~> 7.1.0'
   s.add_runtime_dependency 'anthropic', '~> 0.3.0'
+  s.add_runtime_dependency 'gemini-ai', '~> 4.2'
   s.name        = 'mokkku'
   s.version     = Mokkku::Version
   s.date        = '2024-08-01'
