@@ -3,7 +3,7 @@ module Mokkku
     module_function
 
     def to_s
-      '0.0.5'
+      '0.0.6'
     end
   end
 end

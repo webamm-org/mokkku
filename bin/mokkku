@@ -3,6 +3,7 @@
 
 require 'mokkku'
 require 'optionparser'
+require 'fileutils'
 
 options = {}
 
@@ -38,6 +39,7 @@ OptionParser.new do |opts|
   end
 end.parse!
 
+base_dir = Dir.pwd
 # Load Rails project
 begin
   require File.join(base_dir, 'config', 'boot')
@@ -51,5 +53,7 @@ end
 Rails.application.eager_load! if defined?(Rails)
 # Rails 6 support
 Zeitwerk::Loader.eager_load_all if defined?(Zeitwerk)
+
+FileUtils.mkdir_p(File.join(base_dir, 'spec/mocks'))
 
 Mokkku::Cli::Runner.start(options)
