@@ -38,4 +38,18 @@ OptionParser.new do |opts|
   end
 end.parse!
 
+# Load Rails project
+begin
+  require File.join(base_dir, 'config', 'boot')
+  require File.join(base_dir, 'config', 'environment')
+rescue LoadError
+  puts "\nUh-oh! You must be in the root directory of a Rails project.\n"
+  raise
+end
+
+# Load Rails models
+Rails.application.eager_load! if defined?(Rails)
+# Rails 6 support
+Zeitwerk::Loader.eager_load_all if defined?(Zeitwerk)
+
 Mokkku::Cli::Runner.start(options)
