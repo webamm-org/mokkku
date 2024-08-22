@@ -7,6 +7,7 @@ Japanese term Mokkku (モック) simply stands for mock. Mokkku is a simple libr
 * It provides unique test data for your application that in many cases needs something more than values defined in (F)Faker
 * It generates test data in any language
 * It holds the context which make the test records as close to production values as possible so you won't end up with record where city is New York and country is France
+* The generated data is more up to date than the data that FFaker holds
 
 ## Configuration
 
@@ -18,11 +19,11 @@ group :development, :test do
 end
 ```
 
-As the next step, create initializer in `config/initializers/mokkku.rb`:
+By default, mocks directory is `./spec/mocks` but you can change it. Create initializer in `config/initializers/mokkku.rb`:
 
 ```ruby
 Mokkku.configure do |config|
-  config.mocks_path = './spec/mocks'
+  config.mocks_path = './alternative/directory'
 end
 ```
 
@@ -66,6 +67,16 @@ Generation with Gemini model:
 ```bash
 mokkku --models=User,Company --api-key=value --llm-model=gemini
 ```
+
+## Mock generation without LLM api keys
+
+If you don't own paid account, you can simply generate the prompt, paste it into LLM chat window and the copy generated YAML:
+
+```bash
+mokkku --models=User,Company
+```
+
+The result for prompt generated for `User` model, paste into `./spec/mocks/user.yml` file, etc.
 
 ## Usage with FactoryBot
 
